@@ -16,4 +16,12 @@ public class LoginController {
         return "/login";
     }
 
+    @GetMapping("/user")
+    public String getUser(@RequestParam("username") String username, Map<String, Object> model) {
+        String query = "SELECT * FROM users WHERE username = '" + username + "'";
+        Map<String, Object> user = jdbcTemplate.queryForMap(query);
+        model.put("user", user);
+        return "user";
+    }
+
 }
