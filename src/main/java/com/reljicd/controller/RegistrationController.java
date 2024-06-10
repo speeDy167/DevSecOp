@@ -15,7 +15,6 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     private final UserService userService;
-    private static final String Register = "/registration";
     
     @Autowired
     public RegistrationController(UserService userService) {
@@ -27,7 +26,7 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName(Register);
+        modelAndView.setViewName("/registration");
         return modelAndView;
     }
 
@@ -48,7 +47,7 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName(Register);
+            modelAndView.setViewName("/registration");
         } else {
             // Registration successful, save user
             // Set user role to USER and set it as active
@@ -56,7 +55,7 @@ public class RegistrationController {
 
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName(Register);
+            modelAndView.setViewName("/registration");
         }
         return modelAndView;
     }
