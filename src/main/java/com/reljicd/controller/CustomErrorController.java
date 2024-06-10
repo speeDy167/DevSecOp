@@ -13,7 +13,7 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping(PATH)
     public ModelAndView error() {
-        return new ModelAndView(PATH);
+        return new ModelAndView("/error");
     }
 
     @GetMapping("/403")
